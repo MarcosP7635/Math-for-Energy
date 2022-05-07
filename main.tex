@@ -1,0 +1,132 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{chemfig}
+\usepackage[version=4]{mhchem}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{mathabx}
+\usepackage{relsize}
+\usepackage{graphics}
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+%\usepackage{indentfirst}
+\usepackage{tikz}
+\usepackage{sidecap}
+\usepackage{sidecap}
+\geometry{
+ a4paper,
+ total={6.5in,0in},
+ left= 15mm,
+ top= 15mm,
+ bottom=15mm,
+ right = 15mm
+ }
+\title{Math for Energy}
+\author{Marcos Perez}
+\date{May 2022}
+
+\begin{document}
+
+\maketitle
+\section{Daughter nucleus abundance in n-generation decay chain}
+\subsection{Formula Proposition}
+Where there 1 is one mole of the 0-th generation nucleus at $t=0$ there are $m_i$ moles of the $i-th$ generation nucleus at time $t$. We assume that the $i-th$ generation nucleus has a measurable e-folding time of $\lambda_i$. 
+\begin{equation}
+\begin{split}
+m_0 = e^{\frac{t}{-\lambda_0}}\\
+m_{i>0} = \frac{e^{ta}-1}{-a\lambda_0}\\
+a = \sum_{k=0}^{i}{-\lambda_{i}^{-1}}
+\end{split}
+\end{equation}
+\subsection{Formula Proof}
+At a given time $t$ there are $m_i$ moles of the $i-th$ daughter nucleus. There are $\nu_{i}$ daughter nuclei being produced instantaneously by the decay of the $i-1th$ generation in the decay chain, and this is the only source of nuclei and $i>1$. We assume there is no source of new 0-th generation nuclei. By the properties of radioactive decay
+\begin{equation}\label{eqn:propertiesRad}
+\begin{split}
+m_i = \int_0^t P_id\nu_{i}\\
+\frac{d\nu_{i}}{dt} = -\frac{dm_{i-1}}{dt}\\
+\end{split}
+\end{equation}
+Where the probability of a single nucleus with not decaying after a time $t$ is
+\begin{equation}
+\begin{split}
+P_i = e^{-\frac{t}{\lambda_{i}}}\\
+\end{split}
+\end{equation}
+Thus we make the substitutions to write the following recursive formula
+\begin{equation}\label{eqn:recursiveForm}
+\begin{split}
+m_i = -\int_0^t e^{-\frac{t}{\lambda_{i}}}\frac{dm_{i-1}}{dt}dt\\
+\end{split}
+\end{equation}
+Assuming there is no source of new 0-th generation nuclei
+\begin{equation}
+\begin{split}
+m_1 = \int_0^te^{\frac{t}{-\lambda_1}}d\nu_1 = -\int_0^te^{\frac{t}{-\lambda_1}}\frac{dm_0}{dt}dt = \frac{1}{\lambda_0}\int_0^te^{\frac{t}{-\lambda_1}}e^{\frac{t}{-\lambda_0}}dt = \frac{\lambda_1}{\lambda_1+\lambda_0}(e^{\frac{t}{-\lambda_1}}e^{\frac{t}{-\lambda_0}}-1) \\
+\end{split}
+\end{equation}
+In the general case (again only for $i>1$)
+\begin{equation}
+\begin{split}
+m_{i+1} = -\int_0^t e^{-\frac{t}{\lambda_{i+1}}}\frac{dm_{i}}{dt}dt\\
+m_{i+1} = \int_0^t e^{-\frac{t}{\lambda_{i+1}}}\frac{d}{dt}\int_0^t e^{-\frac{t}{\lambda_{i}}}\frac{dm_{i-1}}{dt}dtdt\\
+\end{split}
+\end{equation}
+Simplifying the right side with the fundamental theorem of calculus
+\begin{equation}
+\begin{split}
+m_{i+1} = \int_0^t e^{-\frac{t}{\lambda_{i+1}}} e^{-\frac{t}{\lambda_{i}}}\frac{dm_{i-1}}{dt}dt\\
+\end{split}
+\end{equation}
+Now for $i=2$ using the previous results
+\begin{equation}
+\begin{split}
+m_2 = \int_0^t e^{t\frac{1}{-\lambda_2}}d\nu_2 
+ = \frac{1}{\lambda_0}\int_0^t e^{t\frac{1}{-\lambda_2}}e^{-\frac{t}{\lambda_{1}}}e^{\frac{t}{-\lambda_0}}dt =
+ \frac{\lambda_1\lambda_2}{\lambda_0\lambda_1+\lambda_1\lambda_2+\lambda_0\lambda_2} e^{t\frac{1}{-\lambda_2}}e^{-\frac{t}{\lambda_{1}}}e^{\frac{t}{-\lambda_0}}\\
+\end{split}
+\end{equation}
+Thus the formula holds for $i=0,1,\& \ 2$. Using induction, we will show that it holds for all generations of the decay chain. We will now show that if the formula holds for $i$, then it must hold for $i+1$. 
+So we have
+\begin{equation}
+\begin{split}
+m_i = \frac{\prod_{k=0}^ie^{\frac{t}{-\lambda}}}{\lambda_0\sum_{k=0}^i\frac{1}{\lambda_k}}\\
+\end{split}
+\end{equation}
+By the recursive formula we derived (Eq. \ref{eqn:recursiveForm})
+\begin{equation}
+\begin{split}
+m_{i+1} = -\int_0^t P_{i+1}\frac{dm_i}{dt} = -\int_0^t e^{\frac{t}{-\lambda_{i+1}}}\frac{d}{dt}\frac{\prod_{k=0}^ie^{\frac{t}{-\lambda}}}{\lambda_0\sum_{k=0}^i\frac{1}{\lambda_k}}dt = -\frac{1}{\lambda_0\sum_{k=0}^i\frac{1}{\lambda_k}}\int_0^t e^{\frac{t}{-\lambda_{i+1}}}\frac{d}{dt}\prod_{k=0}^ie^{\frac{t}{-\lambda}}dt\\
+\end{split}
+\end{equation}
+Simplifying the right most side we have by first evaluating the derivative within the integral and using the properties of integration
+\begin{equation}
+\begin{split}
+\frac{d}{dt}\prod_{k=0}^ie^{\frac{t}{-\lambda_k}} = \frac{d}{dt}e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}} = e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}}\sum_{k=0}^i\frac{1}{-\lambda_k}\\
+m_{i+1} = -\frac{1}{\lambda_0\sum_{k=0}^i\frac{1}{\lambda_k}}\int_0^t e^{\frac{t}{-\lambda_{i+1}}}e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}}\sum_{k=0}^i\frac{1}{-\lambda_k}dt = -\frac{\sum_{k=0}^i\frac{1}{-\lambda_k}}{\lambda_0\sum_{k=0}^i\frac{1}{\lambda_k}}\int_0^t e^{\frac{t}{-\lambda_{i+1}}}e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}}dt
+\end{split}
+\end{equation}
+Simplifying the constant in front of the integral and evaluating the integral yields 
+\begin{equation}
+\begin{split}
+-\frac{\sum_{k=0}^i\frac{1}{-\lambda_k}}{\lambda_0\sum_{k=0}^i\frac{1}{\lambda_k}} = \frac{1}{-\lambda_0}\\
+\int_0^t e^{\frac{t}{-\lambda_{i+1}}}e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}}dt = \int_0^t e^{t\sum_{k=0}^{i+1}\frac{1}{-\lambda_k}}dt = (e^{t\sum_{k=0}^{i+1}\frac{1}{-\lambda_k}}-1)dt  
+\frac{1}{-\lambda}\int_0^t e^{\frac{t}{-\lambda_{i+1}}}e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}}dt =  \\
+m_{i+1} = \frac{1}{-\lambda}\int_0^t e^{\frac{t}{-\lambda_{i+1}}}e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}}dt = \frac{e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}}}{-\lambda\sum_{k=0}^i\frac{1}{-\lambda_k}}\\
+\blacksquare
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+
+\end{document}
