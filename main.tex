@@ -44,11 +44,13 @@ a = \sum_{k=0}^{i}{-\lambda_{i}^{-1}}
 \end{split}
 \end{equation}
 \subsection{Formula Proof}
-At a given time $t$ there are $m_i$ moles of the $i-th$ daughter nucleus. There are $\nu_{i}$ daughter nuclei being produced instantaneously by the decay of the $i-1th$ generation in the decay chain, and this is the only source of nuclei and $i>1$. We assume there is no source of new 0-th generation nuclei. By the properties of radioactive decay
+At a given time $t$ there are $m_i$ moles of the $i-th$ daughter nucleus. For $i>0$, there are $\nu_{i}$ daughter nuclei produced by the decay of the $i-1th$ generation in the decay chain, and this is the only source of any nuclei in the system. We assume there is no source of new 0-th generation nuclei. By the properties of radioactive decay
 \begin{equation}\label{eqn:propertiesRad}
 \begin{split}
 m_i = \int_0^t P_id\nu_{i}\\
-\frac{d\nu_{i}}{dt} = -\frac{dm_{i-1}}{dt}\\
+\nu_i = \int_0^t (1-P_{i-1})d\nu_{i-1}\\
+\nu_0 = 0\quad \nu_1 = 1-P_0\\
+\frac{d\nu_{i}}{dt} = (1-P_{i-1})\frac{d\nu_{i-1}}{dt}\forall i\in\mathbb{Z}, i>1\\
 \end{split}
 \end{equation}
 Where the probability of a single nucleus with not decaying after a time $t$ is
@@ -60,20 +62,28 @@ P_i = e^{-\frac{t}{\lambda_{i}}}\\
 Thus we make the substitutions to write the following recursive formula
 \begin{equation}\label{eqn:recursiveForm}
 \begin{split}
-m_i = -\int_0^t e^{-\frac{t}{\lambda_{i}}}\frac{dm_{i-1}}{dt}dt\\
+m_i = -\int_0^t P_i(1-P_{i-1})\frac{d\nu_{i-1}}{dt}dt\\
 \end{split}
 \end{equation}
 Assuming there is no source of new 0-th generation nuclei
 \begin{equation}
 \begin{split}
-m_1 = \int_0^te^{\frac{t}{-\lambda_1}}d\nu_1 = -\int_0^te^{\frac{t}{-\lambda_1}}\frac{dm_0}{dt}dt = \frac{1}{\lambda_0}\int_0^te^{\frac{t}{-\lambda_1}}e^{\frac{t}{-\lambda_0}}dt = \frac{\lambda_1}{\lambda_1+\lambda_0}(e^{\frac{t}{-\lambda_1}}e^{\frac{t}{-\lambda_0}}-1) \\
+m_1 = \int_0^te^{\frac{t}{-\lambda_1}}d\nu_0 = \int_0^te^{\frac{t}{-\lambda_1}}\frac{d}{dt}(1-P_0)dt = -\int_0^te^{\frac{t}{-\lambda_1}}\frac{dP_0}{dt}dt = \frac{1}{\lambda_0}\int_0^te^{\frac{t}{-\lambda_1}}e^{\frac{t}{-\lambda_0}}dt = \frac{\lambda_1}{\lambda_1+\lambda_0}(1-e^{-t(\frac{1}{\lambda_0}+\frac{1}{\lambda_1})}) \\
 \end{split}
 \end{equation}
-In the general case (again only for $i>1$)
+For more insight on how to write the general case, we first compute using \ref{eqn:propertiesRad}
 \begin{equation}
 \begin{split}
-m_{i+1} = -\int_0^t e^{-\frac{t}{\lambda_{i+1}}}\frac{dm_{i}}{dt}dt\\
-m_{i+1} = \int_0^t e^{-\frac{t}{\lambda_{i+1}}}\frac{d}{dt}\int_0^t e^{-\frac{t}{\lambda_{i}}}\frac{dm_{i-1}}{dt}dtdt\\
+m_2 = \int_0^t P_2d\nu_{2} = \int_0^t e^{\frac{t}{-\lambda_2}}d\nu_2\\
+d\nu_{2} = (1-P_{1})\frac{d\nu_{1}}{dt}dt\\
+m_2 = \int_0^t e^{\frac{t}{-\lambda_2}}(1-P_{1})\frac{d\nu_{1}}{dt}dt = -\int_0^t e^{\frac{t}{-\lambda_2}}(1-P_{1})\frac{dP_0}{dt}dtdt\\
+\end{split}
+\end{equation}
+HAVE NOT CORRECTED BEYOND THIS POINT \hline In the general case (again only for $i>1$)
+\begin{equation}
+\begin{split}
+m_{i+1} = -\int_0^t e^{-\frac{t}{\lambda_{i+1}}}(1-P_{i})\frac{d\nu_{i-1}}{dt}dt\\
+m_{i+1} = \int_0^t e^{-\frac{t}{\lambda_{i+1}}}dt\\
 \end{split}
 \end{equation}
 Simplifying the right side with the fundamental theorem of calculus
