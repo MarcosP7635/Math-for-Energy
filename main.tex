@@ -72,20 +72,42 @@ m_1 = \int_0^te^{\frac{t}{-\lambda_1}}d\nu_0 = \int_0^te^{\frac{t}{-\lambda_1}}\
 \end{split}
 \end{equation}
 For more insight on how to write the general case, we first compute using \ref{eqn:propertiesRad}
-\begin{equation}
+\begin{equation}\label{eqn:m2derivation}
 \begin{split}
 m_2 = \int_0^t P_2d\nu_{2} = \int_0^t e^{\frac{t}{-\lambda_2}}d\nu_2\\
 d\nu_{2} = (1-P_{1})\frac{d\nu_{1}}{dt}dt\\
 m_2 = \int_0^t e^{\frac{t}{-\lambda_2}}(1-P_{1})\frac{d\nu_{1}}{dt}dt = -\int_0^t e^{\frac{t}{-\lambda_2}}(1-P_{1})\frac{dP_0}{dt}dtdt\\
+m_2 = \frac{1}{\lambda_0}\int_0^t e^{\frac{t}{-\lambda_2}}(1-e^{\frac{t}{-\lambda_1}})e^{\frac{t}{-\lambda_0}}dtdt = 
+\frac{1}{\lambda_0}\int_0^t e^{t(\frac{1}{-\lambda_2}+\frac{1}{-\lambda_0})}(1-e^{\frac{t}{-\lambda_1}})dtdt\\
+m_2 = \lambda_2(\lambda_1\frac{e^{-t(\frac{1}{\lambda_2}+\frac{1}{\lambda_1}+\frac{1}{\lambda_0})}-1}{\lambda_2\lambda_0+\lambda_2\lambda_1+\lambda_0\lambda_1}+\frac{1-e^{-t(\frac{1}{\lambda_2}+\frac{1}{\lambda_0})}}{\lambda_0+\lambda_2})
 \end{split}
 \end{equation}
-HAVE NOT CORRECTED BEYOND THIS POINT \hline In the general case (again only for $i>1$)
+Using the results for $dn_i$ from the properties of radioactive decay (\ref{eqn:propertiesRad})
 \begin{equation}
 \begin{split}
-m_{i+1} = -\int_0^t e^{-\frac{t}{\lambda_{i+1}}}(1-P_{i})\frac{d\nu_{i-1}}{dt}dt\\
-m_{i+1} = \int_0^t e^{-\frac{t}{\lambda_{i+1}}}dt\\
+\frac{d\nu_{i+1}}{dt} = (1-P_{i})\frac{d\nu_{i}}{dt} =  (1-P_{i})(1-P_{i-1})\frac{d\nu_{i-1}}{dt}\\
 \end{split}
 \end{equation}
+Which suggests the following formula 
+\begin{equation}
+\begin{split}
+\frac{d\nu_{i+1}}{dt} = \frac{d\nu_{1}}{dt}\prod_{k=2}^{i} (1-P_{k}) = (1-P_{1})\frac{dP_0}{dt}\prod_{k=2}^{i} (1-e^{t\frac{1}{-\lambda_k}}) = -\frac{1}{\lambda_0}e^{\frac{t}{-\lambda_0}}\prod_{k=1}^{i} (1-e^{t\frac{1}{-\lambda_k}}) \\
+\end{split}
+\end{equation}
+We will now prove the following using induction 
+\begin{equation}\label{eqn:nucleiProduced}
+\begin{split}
+\frac{d\nu_{i}}{dt} = -\frac{1}{\lambda_0}e^{\frac{t}{-\lambda_0}}\prod_{k=1}^{i-1} (1-e^{t\frac{1}{-\lambda_k}})\forall i\in\mathbb{Z}, i>1\\
+\end{split}
+\end{equation}
+Thus we have for the general case using the results for the daughter nuclei being produced (Equation \ref{eqn:nucleiProduced}) and the formula for the moles of the i-th generation nucleus (the top most equation in \ref{eqn:propertiesRad})
+\begin{equation}
+\begin{split}
+m_i = \int_0^t P_i\frac{d\nu_i}{dt}dt = -\int_0^t e^{t\frac{1}{-\lambda_i}}\frac{1}{\lambda_0}e^{\frac{t}{-\lambda_0}}\prod_{k=1}^{i-1} (1-e^{t\frac{1}{-\lambda_k}})dt\\
+m_i = -\frac{1}{\lambda_0}\int_0^te^{t(\frac{1}{-\lambda_0}+\frac{1}{-\lambda_1})}\prod_{k=1}^{i-1} (1-e^{t\frac{1}{-\lambda_k}})dt = -\frac{1}{\lambda_0}\int_0^t\sum_{}^{}e^{-t\frac{1}{\lambda_k}}+\sum_
+\end{split}
+\end{equation}
+HAVE NOT CORRECTED ANYTHING PAST THIS YET \hline
 Simplifying the right side with the fundamental theorem of calculus
 \begin{equation}
 \begin{split}
