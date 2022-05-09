@@ -35,12 +35,13 @@
 \maketitle
 \section{Daughter nucleus abundance in n-generation decay chain}
 \subsection{Formula Proposition}
-Where there 1 is one mole of the 0-th generation nucleus at $t=0$ there are $m_i$ moles of the $i-th$ generation nucleus at time $t$. We assume that the $i-th$ generation nucleus has a measurable e-folding time of $\lambda_i$. 
+Where there 1 is one mole of the 0-th generation nucleus at $t=0$ there are $m_i$ moles of the $i-th$ generation nucleus at time $t$. We assume that the $i-th$ generation nucleus has a measurable e-folding time of $\lambda_i$. Additionally, $r_i$ is the decay rate of the $i-th$ generation nucleus in moles/time.
 \begin{equation}
 \begin{split}
 m_0 = e^{\frac{t}{-\lambda_0}}\\
-m_{i>0} = \frac{e^{ta}-1}{-a\lambda_0}\\
-a = \sum_{k=0}^{i}{-\lambda_{i}^{-1}}
+m_{i>0} = -\frac{1}{\lambda_0}\int_0^te^{t(\frac{1}{-\lambda_0}+\frac{1}{-\lambda_1})}a_{i-1}dt\\
+r_i = -\frac{1}{\lambda_0}e^{\frac{t}{-\lambda_0}}a_i\\
+a_i = \prod_{k=1}^{i}(1-e^{t\frac{1}{-\lambda_k}})
 \end{split}
 \end{equation}
 \subsection{Formula Proof}
