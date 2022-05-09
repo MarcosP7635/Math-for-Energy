@@ -104,57 +104,16 @@ Thus we have for the general case using the results for the daughter nuclei bein
 \begin{equation}
 \begin{split}
 m_i = \int_0^t P_i\frac{d\nu_i}{dt}dt = -\int_0^t e^{t\frac{1}{-\lambda_i}}\frac{1}{\lambda_0}e^{\frac{t}{-\lambda_0}}\prod_{k=1}^{i-1} (1-e^{t\frac{1}{-\lambda_k}})dt\\
-m_i = -\frac{1}{\lambda_0}\int_0^te^{t(\frac{1}{-\lambda_0}+\frac{1}{-\lambda_1})}\prod_{k=1}^{i-1} (1-e^{t\frac{1}{-\lambda_k}})dt = -\frac{1}{\lambda_0}\int_0^t\sum_{}^{}e^{-t\frac{1}{\lambda_k}}+\sum_
+m_i = -\frac{1}{\lambda_0}\int_0^te^{t(\frac{1}{-\lambda_0}+\frac{1}{-\lambda_1})}\prod_{k=1}^{i-1} (1-e^{t\frac{1}{-\lambda_k}})dt \\
 \end{split}
 \end{equation}
-HAVE NOT CORRECTED ANYTHING PAST THIS YET \hline
-Simplifying the right side with the fundamental theorem of calculus
+For the decay rate, we have
 \begin{equation}
 \begin{split}
-m_{i+1} = \int_0^t e^{-\frac{t}{\lambda_{i+1}}} e^{-\frac{t}{\lambda_{i}}}\frac{dm_{i-1}}{dt}dt\\
+r_i = \frac{d}{dt}\int_0^t 1-P_i\frac{d\nu_i}{dt}dt = -\frac{1}{\lambda_0}\frac{d}{dt}\int_0^t (1-e^{t\frac{1}{-\lambda_i}})e^{\frac{t}{-\lambda_0}}\prod_{k=1}^{i-1} (1-e^{t\frac{1}{-\lambda_k}})dt\\
+r_i =  -\frac{1}{\lambda_0}e^{\frac{t}{-\lambda_0}}\prod_{k=1}^{i} (1-e^{t\frac{1}{-\lambda_k}})\\
 \end{split}
 \end{equation}
-Now for $i=2$ using the previous results
-\begin{equation}
-\begin{split}
-m_2 = \int_0^t e^{t\frac{1}{-\lambda_2}}d\nu_2 
- = \frac{1}{\lambda_0}\int_0^t e^{t\frac{1}{-\lambda_2}}e^{-\frac{t}{\lambda_{1}}}e^{\frac{t}{-\lambda_0}}dt =
- \frac{\lambda_1\lambda_2}{\lambda_0\lambda_1+\lambda_1\lambda_2+\lambda_0\lambda_2} e^{t\frac{1}{-\lambda_2}}e^{-\frac{t}{\lambda_{1}}}e^{\frac{t}{-\lambda_0}}\\
-\end{split}
-\end{equation}
-Thus the formula holds for $i=0,1,\& \ 2$. Using induction, we will show that it holds for all generations of the decay chain. We will now show that if the formula holds for $i$, then it must hold for $i+1$. 
-So we have
-\begin{equation}
-\begin{split}
-m_i = \frac{\prod_{k=0}^ie^{\frac{t}{-\lambda}}}{\lambda_0\sum_{k=0}^i\frac{1}{\lambda_k}}\\
-\end{split}
-\end{equation}
-By the recursive formula we derived (Eq. \ref{eqn:recursiveForm})
-\begin{equation}
-\begin{split}
-m_{i+1} = -\int_0^t P_{i+1}\frac{dm_i}{dt} = -\int_0^t e^{\frac{t}{-\lambda_{i+1}}}\frac{d}{dt}\frac{\prod_{k=0}^ie^{\frac{t}{-\lambda}}}{\lambda_0\sum_{k=0}^i\frac{1}{\lambda_k}}dt = -\frac{1}{\lambda_0\sum_{k=0}^i\frac{1}{\lambda_k}}\int_0^t e^{\frac{t}{-\lambda_{i+1}}}\frac{d}{dt}\prod_{k=0}^ie^{\frac{t}{-\lambda}}dt\\
-\end{split}
-\end{equation}
-Simplifying the right most side we have by first evaluating the derivative within the integral and using the properties of integration
-\begin{equation}
-\begin{split}
-\frac{d}{dt}\prod_{k=0}^ie^{\frac{t}{-\lambda_k}} = \frac{d}{dt}e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}} = e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}}\sum_{k=0}^i\frac{1}{-\lambda_k}\\
-m_{i+1} = -\frac{1}{\lambda_0\sum_{k=0}^i\frac{1}{\lambda_k}}\int_0^t e^{\frac{t}{-\lambda_{i+1}}}e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}}\sum_{k=0}^i\frac{1}{-\lambda_k}dt = -\frac{\sum_{k=0}^i\frac{1}{-\lambda_k}}{\lambda_0\sum_{k=0}^i\frac{1}{\lambda_k}}\int_0^t e^{\frac{t}{-\lambda_{i+1}}}e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}}dt
-\end{split}
-\end{equation}
-Simplifying the constant in front of the integral and evaluating the integral yields 
-\begin{equation}
-\begin{split}
--\frac{\sum_{k=0}^i\frac{1}{-\lambda_k}}{\lambda_0\sum_{k=0}^i\frac{1}{\lambda_k}} = \frac{1}{-\lambda_0}\\
-\int_0^t e^{\frac{t}{-\lambda_{i+1}}}e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}}dt = \int_0^t e^{t\sum_{k=0}^{i+1}\frac{1}{-\lambda_k}}dt = (e^{t\sum_{k=0}^{i+1}\frac{1}{-\lambda_k}}-1)dt  
-\frac{1}{-\lambda}\int_0^t e^{\frac{t}{-\lambda_{i+1}}}e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}}dt =  \\
-m_{i+1} = \frac{1}{-\lambda}\int_0^t e^{\frac{t}{-\lambda_{i+1}}}e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}}dt = \frac{e^{t\sum_{k=0}^i\frac{1}{-\lambda_k}}}{-\lambda\sum_{k=0}^i\frac{1}{-\lambda_k}}\\
-\blacksquare
-\end{split}
-\end{equation}
-
-
-
 
 
 
