@@ -54,7 +54,7 @@ m_i = \int_0^t P_id\nu_{i}\\
 \frac{d\nu_{i}}{dt} = (1-P_{i-1})\frac{d\nu_{i-1}}{dt}\forall i\in\mathbb{Z}, i>1\\
 \end{split}
 \end{equation}
-Where the probability of a single nucleus with not decaying after a time $t$ is
+Where the probability of a single i-th nucleus not decaying after a time $t$ is
 \begin{equation}
 \begin{split}
 P_i = e^{-\frac{t}{\lambda_{i}}}\\
@@ -111,6 +111,7 @@ m_i = -\frac{1}{\lambda_0}\int_0^te^{t(\frac{1}{-\lambda_0}+\frac{1}{-\lambda_1}
 For the decay rate, we have
 \begin{equation}
 \begin{split}
+r_i = \frac{d\nu_{i+1}}{dt} = -\frac{1}{\lambda_0}e^{\frac{t}{-\lambda_0}}\prod_{k=1}^{i} (1-e^{t\frac{1}{-\lambda_k}}) \\
 r_i = \frac{d}{dt}\int_0^t 1-P_i\frac{d\nu_i}{dt}dt = -\frac{1}{\lambda_0}\frac{d}{dt}\int_0^t (1-e^{t\frac{1}{-\lambda_i}})e^{\frac{t}{-\lambda_0}}\prod_{k=1}^{i-1} (1-e^{t\frac{1}{-\lambda_k}})dt\\
 r_i =  -\frac{1}{\lambda_0}e^{\frac{t}{-\lambda_0}}\prod_{k=1}^{i} (1-e^{t\frac{1}{-\lambda_k}})\\
 \end{split}
