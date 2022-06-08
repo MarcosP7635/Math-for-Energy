@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{chemfig}
+\usepackage[version=4]{mhchem}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{mathabx}
+\usepackage{relsize}
+\usepackage{graphics}
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+%\usepackage{indentfirst}
+\usepackage{tikz}
+\usepackage{sidecap}
+\usepackage{sidecap}
+\geometry{
+ a4paper,
+ total={6.5in,0in},
+ left= 15mm,
+ top= 15mm,
+ bottom=15mm,
+ right = 15mm
+ }
+\title{Methods to Produce Radionuclides with High Energy Efficiency}
+\author{Marcos Perez}
+\date{June 8 2022 - }
+
+\begin{document}
+\maketitle
+\section{Simplest Neutron Case: Probability of Zero Interactions}
+Consider the following scenario:
+\includegraphics[scale=.4]{Images/simplestCaseNeutron.PNG}\\
+A neutron (or anything with negligible stopping power, meaning anything besides a charged particle) enters a homogeneous cloud of particles, each with a cross section $\sigma_E$. Given that unless the neutron collides with a particle, it will continue to travel in a straight line, and if it does not interact with any particles, after travelling $L$ meters through the cloud, it will either decay or escape the cloud. Assuming the neutron is infinitely small, what is the probability of this happening? \\
+Assuming there is a probability $P(x,y,z)$ that a given point is within the cross section of a particle. We seek to find the probability that a randomly selected straight line will not intersect the cross section of a particle. Furthermore, the cross section of an individual particle is isotropic. Since the probability that a point $(x,y,z)$ is not within a particle's cross section is $1-P(x,y,z)$. Thus for two points $(x_1,y_1,z_1)$ and $(x_0,y_0,z_0)$ we have for the probability that neither of those points are within the cross section of a particle $(1-P(x_1,y_1,z_1))(1-P(x_0,y_0,z_0)$. Thus for $N$ points we have the probability that there are no cross sections within $N$ points each of the form $x_i,y_i,z_i$
+\begin{equation}
+\begin{split}
+P(n=0) = \prod_{1}^{N} 1-P(x_i,y_i,z_i)
+\end{split}
+\end{equation}
+where $n$ is the number of cross sections within a set of $N$ points in the cloud. 
+Using the properties of logarithms then taking the limit as $N\to\infty$ we have
+\begin{equation}
+\begin{split}
+\mathlarger{
+P(n=0) = e^{\log(\prod_{1}^{N} 1-P(x_i,y_i,z_i))} = e^{\sum_{1}^{N}\log(1-P(x_i,y_i,z_i))}
+}\\
+\mathlarger{
+\lim_{N\to\infty}P(n=0) = \lim_{N\to\infty} e^{\sum_{1}^{N}\log(1-P(x_i,y_i,z_i))}
+}
+\end{split}
+\end{equation}
+Now for the case where the points $(x_i,y_i,z_i)$ are path travelled by the neutron, which we assume to be of the form $(x(t), y(t), z(t))$. Furthermore, since the cross sections are a scalar field we have
+\begin{equation}
+\begin{split}
+\mathlarger{
+\lim_{N\to\infty}P(n=0) =  e^{\int_a^b\log(1-P(c(t))\mid c'(t)\mid dt} 
+} \\
+\end{split}
+\end{equation}
+where $c(t)$ describes the path of the neutron and its location at a time $t$, where $c(a)$ and $c(b)$ are the two endpoints of the path. Now let us consider the case where $c(t) = (vt, 0, 0)$. Thus we have $\mid c'(t)\mid = v$ which gives
+\begin{equation}
+\begin{split}
+\mathlarger{
+\lim_{N\to\infty}P(n=0) =  e^{v\int_a^b\log(1-P((vt, 0, 0))dt} 
+} \\
+\end{split}
+\end{equation}
+Now let us assume that the particles within the cloud are uniformly distributed. Thus the cross sections within the cloud have a collective area of
+\begin{equation}
+\begin{split}
+\mathlarger{
+A = \frac{\sigma N_AV\rho}{M}
+}\\
+\end{split}
+\end{equation}
+where the volume of the cloud is $V$, it has a mass density of $\rho$, $N_A$ is avogadro's number,s and the molar mass of the particles is $M$
+
+
+
+
+\end{document}

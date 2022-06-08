@@ -1,0 +1,71 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{chemfig}
+\usepackage[version=4]{mhchem}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{mathabx}
+\usepackage{relsize}
+\usepackage{graphics}
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+%\usepackage{indentfirst}
+\usepackage{tikz}
+\usepackage{sidecap}
+\usepackage{sidecap}
+\geometry{
+ a4paper,
+ total={6.5in,0in},
+ left= 15mm,
+ top= 15mm,
+ bottom=15mm,
+ right = 15mm
+ }
+\title{Methods to Increase Power Density}
+\author{Marcos Perez}
+\date{May 2022}
+
+\begin{document}
+\maketitle
+Consider a system of $n$ capacitors (or any electric storage system with high power density) all completely charged by a source with an energy density of $10^8$Joules/gram but a power density of $\rho_p$. The capacitors each discharge a power $P$ in watts (for our purposes assume the capacitors discharge at their maximum rate until they are completely discharged).\\
+If a car consumes $10^5.5$W, then it would consume $10^{-2.5}$gram/second. Thus 1kg would last \\
+If the capacitors have an energy density$ \rho_E,$ and n of them at any given time are sufficient to power the car, and there are N capacitors connected to the battery, which has a power density $\rho_P$. 
+If n capacitors are fully charged, they can sufficiently power the car for t seconds.
+What n and N are necessary for the car to drive continuously until $\rho_P$ is insufficient to charge n capacitors?
+$t * N / n $is the number of seconds the battery has to charge n capacitors. It takes the battery $\rho_E * n / \rho_P$ seconds to do this. Thus we have
+\begin{equation}
+\begin{split}
+    \frac{tN}{n} \le \frac{\rho_Em_Cn}{m_B \rho_P} \\
+    m_B\rho_P \le \frac{n^2\rho_Em_C}{tN}\\
+    (10^5)(10^{-1}) \le \frac{(10^{4.5}).3}{2(10^{1.5})}  \\
+\end{split}
+\end{equation}
+Tesla car batteries have a specific power of 1.5W/g
+(\href{
+https://www.tesla.com/pt_PT/blog/bit-about-batteries
+}{
+tesla blog
+},
+\href{
+https://en.m.wikipedia.org/wiki/Tesla_Model_S
+}{
+Tesla model S wiki
+}) and supercapacitors have specific powers of 15 W/g \href{
+https://en.m.wikipedia.org/wiki/Supercapacitor
+}{
+https://en.m.wikipedia.org/wiki/Supercapacitor
+}. Thus we would need $10^{4.5}$ g of supercapacitors at a time 
+powering the car. We can store on the order of $10^5$g in the car, 
+so $N=2n$ and a specific energy of 0.3 J/g. We have for $t = 10^{4.5+.5-5.5} = 10^{-.5}$. Since the third line isn't true, this
+system would not work. \\
+So the most mass we could fit is $10^5$g. A fraction f of the 100kg is powering the car at a time. This allows the secondary battery to power the car for $m $
+For a power consumption $P$ we have $t=\rho_{CE}/(\rho_{CP}P) = \rho_{CE}/\rho_{CP}$. 
+What if we used lithium ion instead? In this case $t = 10^{} = $. 
+
+
+\end{document}
