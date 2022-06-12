@@ -94,25 +94,37 @@ Since we consider the cross section $\sigma$ to be isotropic, consider this volu
 \begin{equation}
 \begin{split}
 \mathlarger{
-r = \frac{3}{4\pi}v^{\frac{1}{3}}
+r = \frac{3}{4\pi}v^{\frac{1}{3}} = \frac{3}{4\pi}(\frac{M}{N_A\rho})^{\frac{1}{3}} 
 }\\
 \mathlarger{
 \sigma_{sphere} = \pi r^2 = \pi\frac{9}{16}v^{\frac{2}{3}} = \pi\frac{9}{16}(\frac{M}{N_A\rho})^{\frac{2}{3}}
 }\\
+\end{split}
+\end{equation}
+Furthermore, we have for the ratio of the sphere's cross section covered by particle's cross section 
+\begin{equation}\label{eqn:isParticleInSphere}
+\begin{split}    
 \mathlarger{
 \frac{\sigma}{\sigma_{sphere}} = \frac{16\sigma}{9\pi v^{\frac{2}{3}}} = 
 \frac{16\sigma}{9\pi}(\frac{N_A\rho}{M})^{\frac{2}{3}}
 }\\
 \end{split}
 \end{equation}
-Now consider the cloud to be in a rigid box, with the face towards the projectiles is $a\times b$ in terms of sphere diameters. Thus each cross section would consist of $ab$ spheres. 
-\begin{equation}
+Now consider the cloud to be in a rigid box, with the face towards the projectiles is $a\times b$ in terms of sphere diameters. Thus each cross section would consist of $ab$ spheres. Thus we have for the fraction of the box's cross sectional area covered by the spheres 
+\begin{equation}\label{eqn:isSphereInBox}
 \begin{split}
 \mathlarger{
-r = \frac{\sigma}{v^{\frac{2}{3}}} = \sigma(\frac{N_A\rho}{M})^\frac{2}{3} 
+\frac{ab\sigma_{sphere}}{ab2r} = \frac{\pi}{2} r = \frac{3}{8}(\frac{M}{N_A\rho})^{\frac{1}{3}} 
 }\\
 \end{split}
 \end{equation}
-
+Thus the product of the right sides of Equations \ref{eqn:isParticleInSphere} and \ref{eqn:isSphereInBox} is the fraction $f$ of the total cross sectional area of the box covered by particles in the cloud 
+\begin{equation}\label{eqn:isParticleInBox}
+\begin{split}
+\mathlarger{
+f = \frac{2\sigma}{3\pi}(\frac{N_A\rho}{M})^{\frac{1}{3}}
+}\\
+\end{split}
+\end{equation}
 
 \end{document}
