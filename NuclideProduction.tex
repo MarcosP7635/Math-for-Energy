@@ -78,9 +78,41 @@ A = \frac{\sigma N_AV\rho}{M}
 }\\
 \end{split}
 \end{equation}
-where the volume of the cloud is $V$, it has a mass density of $\rho$, $N_A$ is avogadro's number,s and the molar mass of the particles is $M$
-
-
+where the volume of the cloud is $V$, it has a mass density of $\rho$, $N_A$ is Avogadro's number,s and the molar mass of the particles is $M$. \\
+On average, a volume of $v$ in the cloud will contain 1 particle. 
+\begin{equation}
+\begin{split}
+\mathlarger{
+N = \frac{N_AV\rho}{M}
+}\\
+\mathlarger{
+v = \frac{V}{N} = \frac{VM}{N_AV\rho} = \frac{M}{N_A\rho}
+}\\
+\end{split}
+\end{equation}
+Since we consider the cross section $\sigma$ to be isotropic, consider this volume to be that of a sphere with a particle at its center, then the cross sectional area of that sphere would be 
+\begin{equation}
+\begin{split}
+\mathlarger{
+r = \frac{3}{4\pi}v^{\frac{1}{3}}
+}\\
+\mathlarger{
+\sigma_{sphere} = \pi r^2 = \pi\frac{9}{16}v^{\frac{2}{3}} = \pi\frac{9}{16}(\frac{M}{N_A\rho})^{\frac{2}{3}}
+}\\
+\mathlarger{
+\frac{\sigma}{\sigma_{sphere}} = \frac{16\sigma}{9\pi v^{\frac{2}{3}}} = 
+\frac{16\sigma}{9\pi}(\frac{N_A\rho}{M})^{\frac{2}{3}}
+}\\
+\end{split}
+\end{equation}
+Now consider the cloud to be in a rigid box, with the face towards the projectiles is $a\times b$ in terms of sphere diameters. Thus each cross section would consist of $ab$ spheres. 
+\begin{equation}
+\begin{split}
+\mathlarger{
+r = \frac{\sigma}{v^{\frac{2}{3}}} = \sigma(\frac{N_A\rho}{M})^\frac{2}{3} 
+}\\
+\end{split}
+\end{equation}
 
 
 \end{document}
