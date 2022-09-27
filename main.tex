@@ -45,19 +45,19 @@ a_i = \prod_{k=1}^{i}(1-e^{t\frac{1}{-\lambda_k}})
 \end{split}
 \end{equation}
 \subsection{Formula Proof}
-At a given time $t$ there are $m_i$ moles of the $i-th$ daughter nucleus. For $i>0$, there are $\nu_{i}$ daughter nuclei produced by the decay of the $i-1th$ generation in the decay chain, and this is the only source of any nuclei in the system. We assume there is no source of new 0-th generation nuclei. By the properties of radioactive decay
+By the properties of radioactive decay, the probability of a single i-th generation nucleus not decaying after a time $t$ is
+\begin{equation}
+\begin{split}
+P_i = e^{-\frac{t}{\lambda_{i}}}\\
+\end{split}
+\end{equation}
+At a given time $t$ there are $m_i$ moles of the $i-th$ daughter nucleus. For $i>0$, there are $\nu_{i}$ daughter nuclei produced by the decay of the $i-1th$ generation in the decay chain, and this is the only source of any nuclei in the system. We assume there is no source of new 0-th generation nuclei. Thus, we have
 \begin{equation}\label{eqn:propertiesRad}
 \begin{split}
 m_i = \int_0^t P_id\nu_{i}\\
 \nu_i = \int_0^t (1-P_{i-1})d\nu_{i-1}\\
 \nu_0 = 0\quad \nu_1 = 1-P_0\\
 \frac{d\nu_{i}}{dt} = (1-P_{i-1})\frac{d\nu_{i-1}}{dt}\forall i\in\mathbb{Z}, i>1\\
-\end{split}
-\end{equation}
-Where the probability of a single i-th nucleus not decaying after a time $t$ is
-\begin{equation}
-\begin{split}
-P_i = e^{-\frac{t}{\lambda_{i}}}\\
 \end{split}
 \end{equation}
 Thus we make the substitutions to write the following recursive formula
@@ -69,7 +69,7 @@ m_i = -\int_0^t P_i(1-P_{i-1})\frac{d\nu_{i-1}}{dt}dt\\
 Assuming there is no source of new 0-th generation nuclei
 \begin{equation}
 \begin{split}
-m_1 = \int_0^te^{\frac{t}{-\lambda_1}}d\nu_0 = \int_0^te^{\frac{t}{-\lambda_1}}\frac{d}{dt}(1-P_0)dt = -\int_0^te^{\frac{t}{-\lambda_1}}\frac{dP_0}{dt}dt = \frac{1}{\lambda_0}\int_0^te^{\frac{t}{-\lambda_1}}e^{\frac{t}{-\lambda_0}}dt = \frac{\lambda_1}{\lambda_1+\lambda_0}(1-e^{-t(\frac{1}{\lambda_0}+\frac{1}{\lambda_1})}) \\
+m_1 = \int_0^te^{\frac{t}{-\lambda_1}}d\nu_1 = \int_0^te^{\frac{t}{-\lambda_1}}\frac{d}{dt}(1-P_0)dt = -\int_0^te^{\frac{t}{-\lambda_1}}\frac{dP_0}{dt}dt = \frac{1}{\lambda_0}\int_0^te^{\frac{t}{-\lambda_1}}e^{\frac{t}{-\lambda_0}}dt = \frac{\lambda_1}{\lambda_1+\lambda_0}(1-e^{-t(\frac{1}{\lambda_0}+\frac{1}{\lambda_1})}) \\
 \end{split}
 \end{equation}
 For more insight on how to write the general case, we first compute using \ref{eqn:propertiesRad}
@@ -83,7 +83,7 @@ m_2 = \frac{1}{\lambda_0}\int_0^t e^{\frac{t}{-\lambda_2}}(1-e^{\frac{t}{-\lambd
 m_2 = \lambda_2(\lambda_1\frac{e^{-t(\frac{1}{\lambda_2}+\frac{1}{\lambda_1}+\frac{1}{\lambda_0})}-1}{\lambda_2\lambda_0+\lambda_2\lambda_1+\lambda_0\lambda_1}+\frac{1-e^{-t(\frac{1}{\lambda_2}+\frac{1}{\lambda_0})}}{\lambda_0+\lambda_2})
 \end{split}
 \end{equation}
-Using the results for $dn_i$ from the properties of radioactive decay (\ref{eqn:propertiesRad})
+Using the results for $d\nu_i$ from the properties of radioactive decay (\ref{eqn:propertiesRad})
 \begin{equation}
 \begin{split}
 \frac{d\nu_{i+1}}{dt} = (1-P_{i})\frac{d\nu_{i}}{dt} =  (1-P_{i})(1-P_{i-1})\frac{d\nu_{i-1}}{dt}\\
